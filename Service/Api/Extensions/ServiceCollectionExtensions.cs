@@ -1,4 +1,4 @@
-﻿using Api.EmailSender;
+﻿using Services.EmailService;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -6,7 +6,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void RegisterServices(this IServiceCollection services)
         {
-            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEmailService, EmailService>();
         }
     }
 }

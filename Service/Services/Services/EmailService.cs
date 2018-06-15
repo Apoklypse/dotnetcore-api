@@ -1,9 +1,9 @@
 ﻿using Domain.Core;
 using System;
 
-namespace Services.EmailSender
+namespace Services.EmailService
 {
-    public class EmailSender : IEmailService
+    public class EmailService : IEmailService
     {
         public void SendEmail(Email email)
         {

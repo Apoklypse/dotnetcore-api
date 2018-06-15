@@ -1,6 +1,6 @@
 ﻿using Domain.Core;
 
-namespace Services.EmailSender
+namespace Services.EmailService
 {
     public interface IEmailService
     {
