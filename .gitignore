@@ -2,3 +2,7 @@
 Service/.vs/
 Service/Api/bin
 Service/Api/obj
+Service/Services/bin
+Service/Services/obj
+Service/Domain/bin
+Service/Domain/obj

@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Domain;
+﻿using Domain.Core;
+using System;
 
-namespace Api.EmailSender
+namespace Services.EmailSender
 {
-    public class EmailSender : IEmailSender
+    public class EmailSender : IEmailService
     {
         public void SendEmail(Email email)
         {
             var recipientString = "";
-            email.Recipients.ForEach(recipient => {
+            email.Recipients.ForEach(recipient =>
+            {
                 recipientString += $"{ recipient } ";
             });
 

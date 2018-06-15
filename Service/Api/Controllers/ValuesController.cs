@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Api.Domain;
-using Api.EmailSender;
+﻿using System.Collections.Generic;
+using Domain.Core;
 using Microsoft.AspNetCore.Mvc;
+using Services.EmailSender;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        private readonly IEmailSender emailSender;
+        private readonly IEmailService emailSender;
 
-        public ValuesController(IEmailSender emailSender)
+        public ValuesController(IEmailService emailSender)
         {
             this.emailSender = emailSender;
         }
