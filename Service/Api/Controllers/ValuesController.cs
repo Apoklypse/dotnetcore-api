@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Api.Domain;
+using Api.EmailSender;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -9,6 +11,13 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly IEmailSender emailSender;
+
+        public ValuesController(IEmailSender emailSender)
+        {
+            this.emailSender = emailSender;
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()
@@ -20,6 +29,11 @@ namespace Api.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
+            this.emailSender.SendEmail(new Email {
+                Recipients = new List<string> { "recipient@address.com", "recipient@address.com" },
+                Subject = "Subject",
+                Content = "Content",
+            });
             return "value";
         }
 
