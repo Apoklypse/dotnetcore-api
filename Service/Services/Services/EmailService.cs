@@ -5,10 +5,10 @@ namespace Services.EmailService
 {
     public class EmailService : IEmailService
     {
-        public void SendEmail(Email email)
+        public void SendEmail(EmailMessage message)
         {
             var recipientString = "";
-            email.Recipients.ForEach(recipient =>
+            message.Recipients.ForEach(recipient =>
             {
                 recipientString += $"{ recipient } ";
             });

@@ -4,6 +4,6 @@ namespace Services.EmailService
 {
     public interface IEmailService
     {
-        void SendEmail(Email email);
+        void SendEmail(EmailMessage message);
     }
 }

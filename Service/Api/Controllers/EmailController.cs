@@ -18,7 +18,7 @@ namespace Api.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            this.emailSender.SendEmail(new Email
+            this.emailSender.SendEmail(new EmailMessage
             {
                 Recipients = new List<string> { "recipient@address.com", "recipient@address.com" },
                 Subject = "Subject",
