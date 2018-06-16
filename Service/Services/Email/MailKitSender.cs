@@ -1,32 +1,40 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
+using System;
+using System.Linq;
 
 namespace Services.Email
 {
     public class MailKitSender : IEmailSender
     {
-        public void Send()
+        public bool Send(MimeMessage messageParam)
         {
-            var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("name@domain.com"));
-            message.To.Add(new MailboxAddress("name@domain.com"));
-            message.Subject = "Subject";
-
-            message.Body = new TextPart("plain")
-            {
-                Text = "Body",
-            };
+            var message = messageParam ?? throw new ArgumentNullException(nameof(messageParam));
 
             using (var client = new SmtpClient())
             {
                 client.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
-                client.Connect("localhost", 25, false);
+                try
+                {
+                    client.Connect("localhost", 25, false);
 
-                //client.Authenticate("username", "password");
+                    //client.Authenticate("username", "password");
 
-                client.Send(message);
-                client.Disconnect(true);
+                    Console.WriteLine($"Sending message to { message.To.FirstOrDefault() }");
+                    client.Send(message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
+                    return false;
+                }
+                finally
+                {
+                    client.Disconnect(true);
+                }
+
+                return true;
             }
         }
     }

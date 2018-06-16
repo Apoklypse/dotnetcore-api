@@ -8,23 +8,25 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class EmailController : Controller
     {
-        private readonly IEmailService emailSender;
+        private readonly IEmailService emailService;
 
-        public EmailController(IEmailService emailSender)
+        public EmailController(IEmailService emailServiceParam)
         {
-            this.emailSender = emailSender;
+            this.emailService = emailServiceParam;
         }
         
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            this.emailSender.SendEmail(new EmailMessage
+            var result = this.emailService.SendEmail(new EmailMessage
             {
-                Recipients = new List<string> { "recipient@address.com", "recipient@address.com" },
+                SenderAddress = "sender@address.com",
+                RecipientAddress = "recipient@address.com",
                 Subject = "Subject",
                 Content = "Content",
             });
-            return new string[] { "value1", "value2" };
+
+            return new JsonResult(result);
         }
         
         [HttpGet("{id}")]

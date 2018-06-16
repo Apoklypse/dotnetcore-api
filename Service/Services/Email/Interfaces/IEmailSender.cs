@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MimeKit;
 
 namespace Services.Email
 {
     public interface IEmailSender
     {
+        bool Send(MimeMessage messageParam);
     }
 }
