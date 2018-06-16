@@ -1,5 +1,6 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
+using Serilog;
 using System;
 using System.Linq;
 
@@ -7,6 +8,13 @@ namespace Services.Email
 {
     public class MailKitSender : IEmailSender
     {
+        private readonly ILogger logger;
+
+        public MailKitSender(ILogger loggerParam)
+        {
+            this.logger = loggerParam ?? throw new ArgumentNullException(nameof(loggerParam));
+        }
+
         public bool Send(MimeMessage messageParam)
         {
             var message = messageParam ?? throw new ArgumentNullException(nameof(messageParam));
@@ -20,13 +28,13 @@ namespace Services.Email
                     client.Connect("localhost", 25, false);
 
                     //client.Authenticate("username", "password");
-
-                    Console.WriteLine($"Sending message to { message.To.FirstOrDefault() }");
+                    
+                    this.logger.Debug($"Sending Email");
                     client.Send(message);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
+                    this.logger.Error(ex, "An error occurred: ");
                     return false;
                 }
                 finally

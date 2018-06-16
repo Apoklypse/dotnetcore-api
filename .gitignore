@@ -1,8 +1,10 @@
 
 Service/.vs/
-Service/Api/bin
-Service/Api/obj
-Service/Services/bin
-Service/Services/obj
-Service/Domain/bin
-Service/Domain/obj
+Service/Api/Api/bin
+Service/Api/Api/obj
+Service/Api/Services/bin
+Service/Api/Services/obj
+Service/Api/Domain/bin
+Service/Api/Domain/obj
+Service/Utility/Logging/bin
+Service/Utility/Logging/obj

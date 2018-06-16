@@ -1,5 +1,6 @@
 ﻿using Domain.Core;
 using MimeKit;
+using Serilog;
 using Services.Email;
 using System;
 
@@ -7,10 +8,14 @@ namespace Services.EmailService
 {
     public class EmailService : IEmailService
     {
+        private readonly ILogger logger;
         private readonly IEmailSender mailSender;
 
-        public EmailService(IEmailSender mailSenderParam)
+        public EmailService(
+            ILogger loggerParam,
+            IEmailSender mailSenderParam)
         {
+            this.logger = loggerParam ?? throw new ArgumentNullException(nameof(loggerParam));
             this.mailSender = mailSenderParam ?? throw new ArgumentNullException(nameof(mailSenderParam));
         }
 
@@ -18,6 +23,8 @@ namespace Services.EmailService
         {
             var email = emailParam ?? throw new ArgumentNullException(nameof(emailParam));
 
+
+            this.logger.Verbose($"Preparing to send email to { email.RecipientAddress }: { email.Content }");
             var message = new MimeMessage();
 
             message.From.Add(new MailboxAddress(email.SenderAddress));

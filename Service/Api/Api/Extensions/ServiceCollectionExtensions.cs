@@ -9,6 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddTransient<IEmailService, EmailService>();
             services.AddTransient<IEmailSender, MailKitSender>();
+            services.ConfigureLogging();
         }
     }
 }

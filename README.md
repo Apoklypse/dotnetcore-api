@@ -1,4 +1,4 @@
 # dotnetcore-api
 
 ### Prerequisites
-* dotnet core 2.1
+* .NET Core 2.1
