@@ -2,6 +2,8 @@
 using Logging.Exceptions;
 using Logging.Factory.Interfaces;
 using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace Logging.Loggers
 {
@@ -28,7 +30,7 @@ namespace Logging.Loggers
         private ILogger CreateLog2Console()
         {
             return new LoggerConfiguration()
-                .MinimumLevel.Verbose()
+                .MinimumLevel.ControlledBy(new LoggingLevelSwitch(config.LogLevel))
                 .WriteTo.Udp(config.DestinationAddress, config.DestinationPort)
                 .CreateLogger();
         }

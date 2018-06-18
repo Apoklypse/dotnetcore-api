@@ -1,5 +1,7 @@
 ﻿using Configuration.Core.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Serilog.Events;
+using System;
 
 namespace Configuration.Core
 {
@@ -10,17 +12,21 @@ namespace Configuration.Core
         public LoggingConfiguration(IConfigurationSection section)
         {
             this.DestinationAddress = section[nameof(DestinationAddress)];
-            this.LogLevel = section[nameof(LogLevel)];
+            this.LogLevel = LogEventLevel.Verbose;
 
-            int port;
-            int.TryParse(section[nameof(DestinationPort)], out port);
-            this.DestinationPort = port;
+            LogEventLevel logLevel;
+            Enum.TryParse(section[nameof(LogLevel)], out logLevel);
+            this.LogLevel = logLevel;
+
+            int destinationPort;
+            int.TryParse(section[nameof(DestinationPort)], out destinationPort);
+            this.DestinationPort = destinationPort;
         }
 
         public string DestinationAddress { get; }
 
         public int DestinationPort { get; }
 
-        public string LogLevel { get; }
+        public LogEventLevel LogLevel { get; }
     }
 }

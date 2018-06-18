@@ -39,14 +39,14 @@ namespace Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
 
-            app.UseSwagger();
+                app.UseSwagger();
             
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint(this.config.Swagger.EndpointUrl, this.config.Swagger.EndpointName);
-            });
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint(this.config.Swagger.EndpointUrl, this.config.Swagger.EndpointName);
+                });
+            }
 
             app.UseMvc();
         }

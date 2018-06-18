@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using Serilog.Events;
 namespace Configuration.Core.Interfaces
 {
     public interface ILoggingConfiguration
@@ -10,6 +7,6 @@ namespace Configuration.Core.Interfaces
 
         int DestinationPort { get; }
 
-        string LogLevel { get; }
+        LogEventLevel LogLevel { get; }
     }
 }
