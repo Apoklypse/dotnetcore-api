@@ -21,17 +21,8 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.RegisterServices(this.config.Logging);
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc(
-                    this.config.Swagger.Version,
-                    new Info {
-                        Title = this.config.Swagger.DocTitle,
-                        Version = this.config.Swagger.Version
-                    });
-            });
+            services.AddServices(this.config.Logging);
+            services.AddSwagger(this.config.Swagger);
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -39,13 +30,7 @@ namespace Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-
-                app.UseSwagger();
-            
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint(this.config.Swagger.EndpointUrl, this.config.Swagger.EndpointName);
-                });
+                app.UseSwagger(this.config.Swagger);
             }
 
             app.UseMvc();
