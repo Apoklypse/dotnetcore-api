@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Configuration.Core;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -8,26 +9,31 @@ namespace Api
 {
     public class Startup
     {
+        private readonly AppConfiguration config;
+
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.config = new AppConfiguration(configuration);
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.RegisterServices();
+            services.RegisterServices(this.config.Logging);
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                c.SwaggerDoc(
+                    this.config.Swagger.Version,
+                    new Info {
+                        Title = this.config.Swagger.DocTitle,
+                        Version = this.config.Swagger.Version
+                    });
             });
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -39,7 +45,7 @@ namespace Api
             
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint(this.config.Swagger.EndpointUrl, this.config.Swagger.EndpointName);
             });
 
             app.UseMvc();
