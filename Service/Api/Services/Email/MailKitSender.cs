@@ -2,7 +2,6 @@
 using MimeKit;
 using Serilog;
 using System;
-using System.Linq;
 
 namespace Services.Email
 {
@@ -28,7 +27,7 @@ namespace Services.Email
                     client.Connect("localhost", 25, false);
 
                     //client.Authenticate("username", "password");
-                    
+
                     this.logger.Debug($"Sending Email");
                     client.Send(message);
                 }

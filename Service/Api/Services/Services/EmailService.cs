@@ -23,7 +23,6 @@ namespace Services.EmailService
         {
             var email = emailParam ?? throw new ArgumentNullException(nameof(emailParam));
 
-
             this.logger.Verbose($"Preparing to send email to { email.RecipientAddress }: { email.Content }");
             var message = new MimeMessage();
 

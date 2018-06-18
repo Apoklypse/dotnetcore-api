@@ -3,7 +3,6 @@ using Logging.Exceptions;
 using Logging.Factory.Interfaces;
 using Serilog;
 using Serilog.Core;
-using Serilog.Events;
 
 namespace Logging.Loggers
 {
@@ -18,10 +17,11 @@ namespace Logging.Loggers
 
         public ILogger CreateLogger(LoggerType loggerType)
         {
-            switch(loggerType)
+            switch (loggerType)
             {
                 case LoggerType.Log2Console:
                     return this.CreateLog2Console();
+
                 default:
                     throw new UnconfiguredLoggerTypeException();
             }

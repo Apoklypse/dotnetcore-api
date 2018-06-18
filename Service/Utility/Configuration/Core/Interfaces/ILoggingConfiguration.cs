@@ -1,4 +1,5 @@
 ﻿using Serilog.Events;
+
 namespace Configuration.Core.Interfaces
 {
     public interface ILoggingConfiguration

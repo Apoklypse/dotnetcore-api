@@ -1,17 +1,16 @@
-﻿using System;
-using Domain.Core;
+﻿using Domain.Core;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 using Services.EmailService;
+using System;
 
 namespace Api.Controllers
 {
     [Route("api/[controller]")]
     public class EmailController : Controller
     {
-        private readonly ILogger logger;
-
         private readonly IEmailService emailService;
+        private readonly ILogger logger;
 
         public EmailController(
             ILogger loggerParam,
@@ -20,19 +19,19 @@ namespace Api.Controllers
             this.logger = loggerParam ?? throw new ArgumentNullException(nameof(loggerParam));
             this.emailService = emailServiceParam ?? throw new ArgumentNullException(nameof(emailServiceParam));
         }
-        
+
         [HttpGet]
         public IActionResult Get()
         {
             return new OkResult();
         }
-        
+
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             return new OkResult();
         }
-        
+
         [HttpPost]
         public IActionResult Post([FromBody]EmailMessage messageParam)
         {

@@ -17,10 +17,8 @@ namespace Configuration.Core
 
         public string DocTitle { get; }
 
-        public string Version { get; }
-
         public string EndpointName { get; }
-
         public string EndpointUrl { get; }
+        public string Version { get; }
     }
 }

@@ -4,10 +4,8 @@
     {
         string DocTitle { get; }
 
-        string Version { get; }
-
         string EndpointName { get; }
-
         string EndpointUrl { get; }
+        string Version { get; }
     }
 }
