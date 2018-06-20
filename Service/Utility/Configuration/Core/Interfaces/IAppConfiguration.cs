@@ -5,5 +5,7 @@
         ILoggingConfiguration Logging { get; }
 
         ISwaggerConfiguration Swagger { get; }
+
+        ISqlConfiguration Sql { get; }
     }
 }

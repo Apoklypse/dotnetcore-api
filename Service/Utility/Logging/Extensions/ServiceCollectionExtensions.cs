@@ -1,6 +1,7 @@
 ﻿using Configuration.Core.Interfaces;
 using Logging;
 using Logging.Loggers;
+using Serilog;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

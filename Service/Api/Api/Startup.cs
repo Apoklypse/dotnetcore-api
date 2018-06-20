@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TeamsApi.Filters;
 
 namespace Api
 {
@@ -30,7 +31,11 @@ namespace Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(
+                config => {
+                    config.Filters.Add(typeof(ExceptionFilter));
+            });
+            services.AddConfig(this.config);
             services.AddServices(this.config.Logging);
             services.AddSwagger(this.config.Swagger);
         }

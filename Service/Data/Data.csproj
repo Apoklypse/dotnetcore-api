@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Utility\Configuration\Configuration.csproj" />
+    <ProjectReference Include="..\Utility\Logging\Logging.csproj" />
+  </ItemGroup>
+
+</Project>

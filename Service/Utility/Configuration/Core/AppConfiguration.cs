@@ -9,10 +9,13 @@ namespace Configuration.Core
         {
             this.Logging = new LoggingConfiguration(configuration.GetSection(LoggingConfiguration.SectionName));
             this.Swagger = new SwaggerConfiguration(configuration.GetSection(SwaggerConfiguration.SectionName));
+            this.Sql = new SqlConfiguration(configuration.GetSection(SqlConfiguration.SectionName));
         }
 
         public ILoggingConfiguration Logging { get; }
 
         public ISwaggerConfiguration Swagger { get; }
+
+        public ISqlConfiguration Sql { get; }
     }
 }
