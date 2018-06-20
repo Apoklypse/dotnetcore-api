@@ -1,6 +1,7 @@
 ﻿using Configuration.Core.Interfaces;
 using Dapper;
 using Data.Core.Interfaces;
+using Data.Enumerations;
 using Domain.Sql.Request;
 using Domain.Sql.Result;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +30,7 @@ namespace Api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = this.dapperClient.ExecuteStoredProcedure<GetTeamsResult>("GetTeams");
+            var result = this.dapperClient.ExecuteStoredProcedure<GetTeamsResult>(StoredProcedures.GetTeams.ToString());
 
             return new JsonResult(result);
         }
@@ -42,7 +43,7 @@ namespace Api.Controllers
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add(nameof(requestParam.Name), requestParam.Name);
 
-            var result = this.dapperClient.ExecuteStoredProcedure<UpsertTeamResult>("UpsertTeam", parameters);
+            var result = this.dapperClient.ExecuteStoredProcedure<UpsertTeamResult>(StoredProcedures.UpsertTeam.ToString(), parameters);
 
             return new JsonResult(result);
         }
