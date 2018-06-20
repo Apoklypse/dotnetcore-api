@@ -60,6 +60,7 @@
     <Folder Include="Tables" />
     <Folder Include="Publish" />
     <Folder Include="StoredProcedures" />
+    <Folder Include="StoredProcedures\Team" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Player.sql" />
@@ -68,8 +69,8 @@
     <Build Include="Tables\Match.sql" />
     <Build Include="Tables\Goal.sql" />
     <Build Include="Tables\MatchPlayers.sql" />
-    <Build Include="StoredProcedures\GetTeams.sql" />
-    <Build Include="StoredProcedures\UpsertTeam.sql" />
+    <Build Include="StoredProcedures\Team\GetTeams.sql" />
+    <Build Include="StoredProcedures\Team\UpsertTeam.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Publish\FootballRecreate.publish.xml" />

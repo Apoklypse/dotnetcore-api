@@ -1,6 +1,6 @@
-﻿namespace Domain.Sql.Request
+﻿namespace Domain.Sql
 {
-    public class UpsertTeamRequest
+    public class UpsertTeamRequest : IRequest
     {
         public string Name { get; set; }
     }

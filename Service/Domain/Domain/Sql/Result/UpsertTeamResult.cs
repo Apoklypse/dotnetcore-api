@@ -1,6 +1,6 @@
-﻿namespace Domain.Sql.Result
+﻿namespace Domain.Sql
 {
-    public class UpsertTeamResult
+    public class UpsertTeamResult : IResult
     {
         public int Id { get; set; }
     }

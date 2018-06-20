@@ -1,6 +1,6 @@
-﻿namespace Domain.Sql.Result
+﻿namespace Domain.Sql
 {
-    public class GetTeamsResult
+    public class GetTeamsResult : IResult
     {
         public int Id { get; set; }
         public string Name { get; set; }
