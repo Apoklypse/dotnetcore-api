@@ -35,8 +35,8 @@ namespace Api
                 config => {
                     config.Filters.Add(typeof(ExceptionFilter));
             });
-            services.AddConfig(this.config);
-            services.AddServices(this.config.Logging);
+
+            services.AddServices(this.config);
             services.AddSwagger(this.config.Swagger);
         }
     }

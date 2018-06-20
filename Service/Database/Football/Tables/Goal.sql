@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Goal]
 (
-        [Id] INT NOT NULL, 
+        [Id] INT NOT NULL IDENTITY(1, 1), 
         [Time] INT NOT NULL,
         [MatchId] INT NOT NULL, 
         [PlayerId] INT NOT NULL,

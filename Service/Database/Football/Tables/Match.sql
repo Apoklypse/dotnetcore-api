@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Match]
 (
-        [Id] INT NOT NULL, 
+        [Id] INT NOT NULL IDENTITY(1, 1), 
         [StartDate] DATETIME2 NOT NULL, 
         [EndDate] DATETIME2 NOT NULL,
         [AwayTeamId] INT NOT NULL,

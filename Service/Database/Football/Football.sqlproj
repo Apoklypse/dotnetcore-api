@@ -68,6 +68,7 @@
     <Build Include="Tables\Match.sql" />
     <Build Include="Tables\Goal.sql" />
     <Build Include="Tables\MatchPlayers.sql" />
+    <Build Include="StoredProcedures\GetTeams.sql" />
     <Build Include="StoredProcedures\UpsertTeam.sql" />
   </ItemGroup>
   <ItemGroup>

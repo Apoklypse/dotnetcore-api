@@ -1,5 +1,13 @@
 ﻿CREATE PROCEDURE dbo.UpsertTeam
-        @name VARCHAR(100) = 0
+        @Name VARCHAR(100)
 AS
-        SELECT @name AS [Name];
+        DECLARE @entryId INT
+
+        INSERT INTO dbo.Team (Name)
+        VALUES (@Name);
+
+        SET @entryId = SCOPE_IDENTITY();
+
+        SELECT @entryId AS [Id]
+
 RETURN 0;

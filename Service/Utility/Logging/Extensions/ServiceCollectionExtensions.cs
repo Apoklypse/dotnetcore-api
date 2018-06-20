@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ServiceCollectionExtensions
     {
-        public static void ConfigureLogging(this IServiceCollection services, ILoggingConfiguration config)
+        public static void AddLogging(this IServiceCollection services, ILoggingConfiguration config)
         {
             var loggerFactory = new LoggerFactory(config);
             var logger = loggerFactory.CreateLogger(LoggerType.Log2Console);

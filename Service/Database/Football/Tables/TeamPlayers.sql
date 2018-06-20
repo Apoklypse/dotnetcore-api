@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[TeamPlayers]
 (
-        [Id] INT NOT NULL, 
+        [Id] INT NOT NULL IDENTITY(1, 1), 
         [PlayerId] INT NOT NULL,
         [TeamId] INT NOT NULL, 
         PRIMARY KEY ([Id]),
